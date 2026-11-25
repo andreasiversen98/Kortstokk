@@ -27,4 +27,18 @@ class Deck
         cards.RemoveAt(0);
         Console.WriteLine($"{card.Rank} of {card.Suit}");
     }
+
+    public void Shuffle()
+    {
+        Random random = new Random();
+        List<Card> shuffled = new List<Card>();
+        
+        while (cards.Count > 0)
+        {
+            int index = random.Next(cards.Count);
+            shuffled.Add(cards[index]);
+            cards.RemoveAt(index);
+        }
+        cards = shuffled;
+    }
 }
