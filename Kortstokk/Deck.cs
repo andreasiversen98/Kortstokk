@@ -31,14 +31,11 @@ class Deck
     public void Shuffle()
     {
         Random random = new Random();
-        List<Card> shuffled = new List<Card>();
-        
-        while (cards.Count > 0)
+
+        for (int i = cards.Count - 1; i > 0; i--)
         {
-            int index = random.Next(cards.Count);
-            shuffled.Add(cards[index]);
-            cards.RemoveAt(index);
+            int j = random.Next(i + 1);
+            (cards[i], cards[j]) = (cards[j], cards[i]);
         }
-        cards = shuffled;
     }
 }
